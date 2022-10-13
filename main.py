@@ -35,10 +35,10 @@ def řádek():
         basic.pause(prodleva)
 
 def on_logo_pressed():
-    global jas, ZMĚNA
+    global jas, ZMENA_JAS
     jas += ZMENA_JAS
     if jas == 250 or jas == 50:
-        ZMĚNA = ZMENA_JAS * -1
+        ZMENA_JAS = ZMENA_JAS * -1
     control.raise_event(EventBusSource.MICROBIT_ID_BUTTON_A,
         EventBusValue.MICROBIT_BUTTON_EVT_CLICK)
 input.on_logo_event(TouchButtonEvent.PRESSED, on_logo_pressed)

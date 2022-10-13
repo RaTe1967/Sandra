@@ -1,14 +1,12 @@
-input.onButtonPressed(Button.A, function on_button_pressed_a() {
+input.onButtonPressed(Button.A, function () {
     řádek()
 })
-input.onButtonPressed(Button.B, function on_button_pressed_b() {
-    
+input.onButtonPressed(Button.B, function () {
     prodleva += ZMĚNA
     music.playTone(prodleva, music.beat(BeatFraction.Double))
     if (prodleva == 500 || prodleva == 100) {
         ZMĚNA = ZMĚNA * -1
     }
-    
     if (prodleva == 500) {
         led.plot(4, 4)
     } else {
@@ -26,33 +24,29 @@ input.onButtonPressed(Button.B, function on_button_pressed_b() {
                 } else {
                     led.unplot(1, 4)
                 }
-                
             }
-            
         }
-        
     }
-    
 })
-function řádek() {
-    for (let pořadí = 0; pořadí < 5; pořadí++) {
+function řádek () {
+    for (let pořadí = 0; pořadí <= 4; pořadí++) {
         led.unplot(pořadí, 0)
     }
     basic.pause(100)
-    for (let pořadí2 = 0; pořadí2 < 5; pořadí2++) {
+    for (let pořadí2 = 0; pořadí2 <= 4; pořadí2++) {
         led.plotBrightness(pořadí2, 0, jas)
         basic.pause(prodleva)
     }
 }
-
-input.onLogoEvent(TouchButtonEvent.Pressed, function on_logo_pressed() {
-    
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     jas += ZMENA_JAS
     if (jas == 250 || jas == 50) {
-        ZMĚNA = ZMENA_JAS * -1
+        ZMENA_JAS = ZMENA_JAS * -1
     }
-    
-    control.raiseEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_BUTTON_EVT_CLICK)
+    control.raiseEvent(
+    EventBusSource.MICROBIT_ID_BUTTON_A,
+    EventBusValue.MICROBIT_BUTTON_EVT_CLICK
+    )
 })
 let ZMENA_JAS = 0
 let jas = 0
